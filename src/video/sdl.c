@@ -33,7 +33,12 @@
 static int screen_width, screen_height;
 static char* ffmpeg_buffer;
 
-static void sdl_setup(int width, int height, int redrawRate, void* context, int drFlags) {
+static void sdl_setup(int videoFormat, int width, int height, int redrawRate, void* context, int drFlags) {
+  if (videoFormat != VIDEO_FORMAT_H264) {
+    fprintf(stderr, "Don't support selected video format\n");
+    exit(1);
+  }
+
   int avc_flags = SLICE_THREADING;
   if (ffmpeg_init(width, height, avc_flags, 2) < 0) {
     fprintf(stderr, "Couldn't initialize video decoding\n");

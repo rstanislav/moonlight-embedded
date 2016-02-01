@@ -22,9 +22,14 @@
 #include <stdio.h>
 
 static FILE* fd;
-static const char* fileName = "fake.h264";
 
-void decoder_renderer_setup(int width, int height, int redrawRate, void* context, int drFlags) {
+void decoder_renderer_setup(int videoFormat, int width, int height, int redrawRate, void* context, int drFlags) {
+  char* fileName;
+  if (videoFormat == VIDEO_FORMAT_H264) {
+    filename = "fake.h264";
+  } else if (videoFormat == VIDEO_FORMAT_H265) {
+    filename = "fake.h265";
+  }
   fd = fopen(fileName, "w");
 }
 
