@@ -83,7 +83,7 @@ static void stream(PSERVER_DATA server, PCONFIGURATION config, enum platform sys
     exit(-1);
   }
 
-  gs_start_app(server, &config->stream, appId, config->sops, config->localaudio);
+  gs_start_app(server, &config->stream, appId, config->sops, config->localaudio, config->h265);
 
   int drFlags = 0;
   if (config->fullscreen)
@@ -130,6 +130,7 @@ static void help() {
   printf("\t-60fps\t\t\tUse 60fps [default]\n");
   printf("\t-bitrate <bitrate>\tSpecify the bitrate in Kbps\n");
   printf("\t-packetsize <size>\tSpecify the maximum packetsize in bytes\n");
+  printf("\t-h265\t\t\tRequest a h265/HEVC stream\n");
   printf("\t-remote\t\t\tEnable remote optimizations\n");
   printf("\t-app <app>\t\tName of app to stream\n");
   printf("\t-nosops\t\t\tDon't allow GFE to modify game settings\n");

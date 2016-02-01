@@ -27,13 +27,15 @@
 
 typedef struct _SERVER_DATA {
   const char* address;
+  char* gpuType;
   bool paired;
   int currentGame;
   int serverMajorVersion;
+  long maxLumaPixelsHEVC;
 } SERVER_DATA, *PSERVER_DATA;
 
 int gs_init(PSERVER_DATA server, const char *keyDirectory);
-int gs_start_app(PSERVER_DATA server, PSTREAM_CONFIGURATION config, int appId, bool sops, bool localaudio);
+int gs_start_app(PSERVER_DATA server, PSTREAM_CONFIGURATION config, int appId, bool sops, bool localaudio, bool h265);
 int gs_applist(PSERVER_DATA server, PAPP_LIST *app_list);
 int gs_pair(PSERVER_DATA server, char* pin);
 int gs_quit_app(PSERVER_DATA server);
